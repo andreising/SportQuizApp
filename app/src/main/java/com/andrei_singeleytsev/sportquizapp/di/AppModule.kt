@@ -1,12 +1,15 @@
 package com.andrei_singeleytsev.sportquizapp.di
 
 import android.app.Application
+
 import androidx.room.Room
-import com.andrei_singeleytsev.sportquizapp.data.MainDataBase
-import com.andrei_singeleytsev.sportquizapp.data.repository.NoteItemRepository
-import com.andrei_singeleytsev.sportquizapp.data.repository.UserScoreRepository
-import com.andrei_singeleytsev.sportquizapp.data.repository.implementations.NoteItemRepositoryImpl
-import com.andrei_singeleytsev.sportquizapp.data.repository.implementations.UserScoreRepositoryImpl
+import com.andrei_singeleytsev.sportquizapp.data.firebase.FirebaseRemoteRepositoryImpl
+import com.andrei_singeleytsev.sportquizapp.data.firebase.repository.FirebaseRemoteRepository
+import com.andrei_singeleytsev.sportquizapp.data.room.MainDataBase
+import com.andrei_singeleytsev.sportquizapp.data.room.repository.NoteItemRepository
+import com.andrei_singeleytsev.sportquizapp.data.room.repository.UserScoreRepository
+import com.andrei_singeleytsev.sportquizapp.data.room.repository.implementations.NoteItemRepositoryImpl
+import com.andrei_singeleytsev.sportquizapp.data.room.repository.implementations.UserScoreRepositoryImpl
 import com.andrei_singeleytsev.sportquizapp.domain.business.GameHelperImpl
 import com.andrei_singeleytsev.sportquizapp.domain.repository.GameHelperProvider
 import dagger.Module
@@ -38,6 +41,12 @@ object AppModule {
     @Singleton
     fun provideUserScoreRepository(db: MainDataBase): UserScoreRepository {
         return UserScoreRepositoryImpl(db.userScoreDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFBRemoteConfig():FirebaseRemoteRepository{
+        return FirebaseRemoteRepositoryImpl()
     }
     @Provides
     @Singleton

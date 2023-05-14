@@ -1,6 +1,5 @@
 package com.andrei_singeleytsev.sportquizapp.presentation.screens.main_screen
 
-import android.util.Log
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -54,7 +53,6 @@ fun MainScreen(
 
             }
         }, floatingActionButton = {
-            Log.d("tag", viewModel.showFloatingActionButton.value.toString())
             if (viewModel.showFloatingActionButton.value){
                 FloatingActionButton(
                     onClick = {

@@ -29,7 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.andrei_singeleytsev.sportquizapp.data.entities.NoteItem
+import com.andrei_singeleytsev.sportquizapp.data.room.entities.NoteItem
 import com.andrei_singeleytsev.sportquizapp.presentation.dialog.DialogController
 import com.andrei_singeleytsev.sportquizapp.presentation.dialog.DialogEvent
 import com.andrei_singeleytsev.sportquizapp.presentation.theme.GreenLight

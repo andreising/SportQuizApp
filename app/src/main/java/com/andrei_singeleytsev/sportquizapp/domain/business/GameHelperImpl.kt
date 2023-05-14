@@ -1,6 +1,6 @@
 package com.andrei_singeleytsev.sportquizapp.domain.business
 
-import android.util.Log
+
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import com.andrei_singeleytsev.sportquizapp.domain.data.ListOfQuestions
@@ -107,12 +107,9 @@ class GameHelperImpl :GameHelperProvider {
 
     private fun getQuestionItem(category: String): QuestionItem{
         val array = getArray(category)
-        Log.d("tag", "11")
         var itemCount: Int
         do {
-            Log.d("tag", "12")
             itemCount = (array.indices).random()
-            Log.d("tag", checkQuestion(category, itemCount).toString())
         } while (checkQuestion(category, itemCount))
         markQuestion(category, itemCount)
         return array[itemCount]

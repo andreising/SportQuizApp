@@ -74,11 +74,12 @@ class QuizScreenViewModel @Inject constructor(
             override fun onFinish() {
                 sendUIEvent(UIEvent.NavigateMain(Routes.QUESTION_SCREEN))
                 progress.value++
+                buttonClickable.value = true
                 angle.value = 0f
                 if (progress.value==10) endGame()
                 }
         }.start()
-        buttonClickable.value = true
+
 
 
     }

@@ -1,6 +1,6 @@
 package com.andrei_singeleytsev.sportquizapp.presentation.screens.notes.note_list_screen
 
-import com.andrei_singeleytsev.sportquizapp.data.entities.NoteItem
+import com.andrei_singeleytsev.sportquizapp.data.room.entities.NoteItem
 
 sealed class NoteListEvent{
     data class OnShowDeleteDialog(val item: NoteItem): NoteListEvent()

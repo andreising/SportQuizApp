@@ -93,7 +93,7 @@ fun ProgressTexts(
             )
         )
         Text(
-            text = "You score:" + score.value.toString(),
+            text = "Your score:" + score.value.toString(),
             style = TextStyle(
                 color = Color.Black,
                 fontSize = 24.sp,

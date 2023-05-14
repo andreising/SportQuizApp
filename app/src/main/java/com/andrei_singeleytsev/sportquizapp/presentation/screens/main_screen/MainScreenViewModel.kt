@@ -3,7 +3,7 @@ package com.andrei_singeleytsev.sportquizapp.presentation.screens.main_screen
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.andrei_singeleytsev.sportquizapp.data.repository.UserScoreRepository
+import com.andrei_singeleytsev.sportquizapp.data.room.repository.UserScoreRepository
 import com.andrei_singeleytsev.sportquizapp.presentation.dialog.DialogController
 import com.andrei_singeleytsev.sportquizapp.presentation.dialog.DialogEvent
 import com.andrei_singeleytsev.sportquizapp.presentation.utils.Routes
@@ -50,9 +50,6 @@ class MainScreenViewModel @Inject constructor(private val repository: UserScoreR
 
             }
             is DialogEvent.OnConfirm -> {
-
-            }
-            is DialogEvent.OnTextChange -> {
 
             }
         }

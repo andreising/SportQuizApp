@@ -4,8 +4,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.andrei_singeleytsev.sportquizapp.data.entities.NoteItem
-import com.andrei_singeleytsev.sportquizapp.data.repository.NoteItemRepository
+import com.andrei_singeleytsev.sportquizapp.data.room.entities.NoteItem
+import com.andrei_singeleytsev.sportquizapp.data.room.repository.NoteItemRepository
 import com.andrei_singeleytsev.sportquizapp.domain.models.QuestionModel
 import com.andrei_singeleytsev.sportquizapp.domain.repository.GameHelperProvider
 import com.andrei_singeleytsev.sportquizapp.presentation.utils.UIEvent
@@ -21,6 +21,7 @@ class QuestionScreenViewModel @Inject constructor(
     private val provider: GameHelperProvider,
     private val repository: NoteItemRepository
 ) : ViewModel() {
+    val isAddButtonEnabled = mutableStateOf(false)
     val isButtonEnabled = mutableStateOf(false)
     val question = mutableStateOf("")
     val answer0 = mutableStateOf("")
@@ -76,6 +77,7 @@ class QuestionScreenViewModel @Inject constructor(
                         NoteItem(null, question.value, currentAnswer, getCurrentTime())
                     )
                 }
+                isAddButtonEnabled.value = false
             }
 
             is QuestionScreenEvent.OnChooseAnswer -> {
@@ -86,6 +88,7 @@ class QuestionScreenViewModel @Inject constructor(
                     colors[event.id].value = Color.Red
                     colors[currentButton].value = Color.Green
                 }
+                isAddButtonEnabled.value = true
                 isButtonEnabled.value = true
             }
 

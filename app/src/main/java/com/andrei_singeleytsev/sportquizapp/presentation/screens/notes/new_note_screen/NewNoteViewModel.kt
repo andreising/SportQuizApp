@@ -6,8 +6,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.andrei_singeleytsev.sportquizapp.data.entities.NoteItem
-import com.andrei_singeleytsev.sportquizapp.data.repository.NoteItemRepository
+import com.andrei_singeleytsev.sportquizapp.data.room.entities.NoteItem
+import com.andrei_singeleytsev.sportquizapp.data.room.repository.NoteItemRepository
 import com.andrei_singeleytsev.sportquizapp.presentation.utils.UIEvent
 import com.andrei_singeleytsev.sportquizapp.presentation.utils.getCurrentTime
 import dagger.hilt.android.lifecycle.HiltViewModel

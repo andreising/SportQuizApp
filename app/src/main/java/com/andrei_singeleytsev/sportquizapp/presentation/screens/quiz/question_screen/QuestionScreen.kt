@@ -1,5 +1,6 @@
 package com.andrei_singeleytsev.sportquizapp.presentation.screens.quiz.question_screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,145 +43,150 @@ fun QuestionScreen(
             }
         }
     }
-    if (viewModel.isButtonEnabled.value) {
-        Button(
-            onClick = {
-                viewModel.onEvent(QuestionScreenEvent.OnSaveQuestion)
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 100.dp)
-        ) {
-            Text(text = "Add to the notes")
-        }
-    }
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(10.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(
-            text = "Question:",
-            modifier = Modifier
-                .wrapContentHeight()
-                .fillMaxWidth()
-                .padding(top = 30.dp),
-            style = TextStyle(
-                color = Color.Black,
-                fontWeight = FontWeight.Bold,
-                fontSize = 30.sp
-            ),
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = viewModel.question.value,
-            modifier = Modifier
-                .wrapContentHeight()
-                .fillMaxWidth()
-                .padding(top = 30.dp),
-            style = TextStyle(
-                color = Color.Black,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
-            ),
-            textAlign = TextAlign.Center
-        )
-        Box(modifier = Modifier.fillMaxWidth()) {
-            Row(modifier = Modifier.fillMaxWidth()) {
-                Column(
-                    modifier = Modifier
-                        .weight(0.5f)
-                        .padding(end = 10.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
 
-                    ) {
-                    TextButton(
+    Box(modifier = Modifier.fillMaxWidth()
+        .background(color = Color.White)){
+        if (viewModel.isButtonEnabled.value) {
+            Button(
+                onClick = {
+                    viewModel.onEvent(QuestionScreenEvent.OnSaveQuestion)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 100.dp)
+            ) {
+                Text(text = "Add to the notes")
+            }
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = "Question:",
+                modifier = Modifier
+                    .wrapContentHeight()
+                    .fillMaxWidth()
+                    .padding(top = 30.dp),
+                style = TextStyle(
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 30.sp
+                ),
+                textAlign = TextAlign.Center
+            )
+            Text(
+                text = viewModel.question.value,
+                modifier = Modifier
+                    .wrapContentHeight()
+                    .fillMaxWidth()
+                    .padding(top = 30.dp),
+                style = TextStyle(
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                ),
+                textAlign = TextAlign.Center
+            )
+            Box(modifier = Modifier.fillMaxWidth()) {
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    Column(
                         modifier = Modifier
-                            .padding(bottom = 15.dp)
-                            .fillMaxWidth(),
-                        onClick = {
-                            if (!viewModel.isButtonEnabled.value) viewModel.onEvent(
-                                QuestionScreenEvent.OnChooseAnswer(0)
+                            .weight(0.5f)
+                            .padding(end = 10.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+
+                        ) {
+                        TextButton(
+                            modifier = Modifier
+                                .padding(bottom = 15.dp)
+                                .fillMaxWidth(),
+                            onClick = {
+                                if (!viewModel.isButtonEnabled.value) viewModel.onEvent(
+                                    QuestionScreenEvent.OnChooseAnswer(0)
+                                )
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = viewModel.colors[0].value
                             )
-                        },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = viewModel.colors[0].value
-                        )
-                    ) {
-                        Text(
-                            text = viewModel.answer0.value,
-                            style = TextStyle(fontWeight = FontWeight.Bold)
-                        )
+                        ) {
+                            Text(
+                                text = viewModel.answer0.value,
+                                style = TextStyle(fontWeight = FontWeight.Bold)
+                            )
+                        }
+                        TextButton(
+                            modifier = Modifier.fillMaxWidth(), onClick = {
+                                if (!viewModel.isButtonEnabled.value) viewModel.onEvent(
+                                    QuestionScreenEvent.OnChooseAnswer(1)
+                                )
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = viewModel.colors[1].value
+                            )
+                        ) {
+                            Text(
+                                text = viewModel.answer1.value,
+                                style = TextStyle(fontWeight = FontWeight.Bold)
+                            )
+                        }
                     }
-                    TextButton(
-                        modifier = Modifier.fillMaxWidth(), onClick = {
-                            if (!viewModel.isButtonEnabled.value) viewModel.onEvent(
-                                QuestionScreenEvent.OnChooseAnswer(1)
-                            )
-                        },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = viewModel.colors[1].value
-                        )
+                    Column(
+                        modifier = Modifier.weight(0.5f),
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(
-                            text = viewModel.answer1.value,
-                            style = TextStyle(fontWeight = FontWeight.Bold)
-                        )
-                    }
-                }
-                Column(
-                    modifier = Modifier.weight(0.5f),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    TextButton(
-                        modifier = Modifier
-                            .padding(bottom = 15.dp)
-                            .fillMaxWidth(),
-                        onClick = {
-                            if (!viewModel.isButtonEnabled.value) viewModel.onEvent(
-                                QuestionScreenEvent.OnChooseAnswer(2)
+                        TextButton(
+                            modifier = Modifier
+                                .padding(bottom = 15.dp)
+                                .fillMaxWidth(),
+                            onClick = {
+                                if (!viewModel.isButtonEnabled.value) viewModel.onEvent(
+                                    QuestionScreenEvent.OnChooseAnswer(2)
+                                )
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = viewModel.colors[2].value
                             )
-                        },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = viewModel.colors[2].value
-                        )
-                    ) {
-                        Text(
-                            text = viewModel.answer2.value,
-                            style = TextStyle(fontWeight = FontWeight.Bold)
-                        )
-                    }
-                    TextButton(
-                        modifier = Modifier.fillMaxWidth(), onClick = {
-                            if (!viewModel.isButtonEnabled.value) viewModel.onEvent(
-                                QuestionScreenEvent.OnChooseAnswer(3)
+                        ) {
+                            Text(
+                                text = viewModel.answer2.value,
+                                style = TextStyle(fontWeight = FontWeight.Bold)
                             )
-                        },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = viewModel.colors[3].value
-                        )
-                    ) {
-                        Text(
-                            text = viewModel.answer3.value,
-                            style = TextStyle(fontWeight = FontWeight.Bold)
-                        )
+                        }
+                        TextButton(
+                            modifier = Modifier.fillMaxWidth(), onClick = {
+                                if (!viewModel.isButtonEnabled.value) viewModel.onEvent(
+                                    QuestionScreenEvent.OnChooseAnswer(3)
+                                )
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = viewModel.colors[3].value
+                            )
+                        ) {
+                            Text(
+                                text = viewModel.answer3.value,
+                                style = TextStyle(fontWeight = FontWeight.Bold)
+                            )
+                        }
                     }
                 }
             }
-        }
 
-        Button(
-            onClick = {
-                viewModel.onEvent(QuestionScreenEvent.OnContinueGame)
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 20.dp),
-            enabled = viewModel.isButtonEnabled.value
-        ) {
-            Text(text = "Continue")
+            Button(
+                onClick = {
+                    viewModel.onEvent(QuestionScreenEvent.OnContinueGame)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 20.dp),
+                enabled = viewModel.isButtonEnabled.value
+            ) {
+                Text(text = "Continue")
+            }
         }
     }
+
 }
