@@ -30,21 +30,7 @@ class NoteListViewModel @Inject constructor(
     override var openDialog = mutableStateOf(false)
         private set
     override fun onDialogEvent(event: DialogEvent) {
-        when(event){
-            DialogEvent.OnCancel ->{
-                openDialog.value = false
-            }
-            DialogEvent.OnConfirm->{
-                viewModelScope.launch {
-                    repository.deleteItem(noteItem!!)
-                }
-                openDialog.value = false
-                sendUIEvent(UIEvent.ShowSnackBar("Undone delete item?"))
-            }
-            else -> {
 
-            }
-        }
     }
     private fun sendUIEvent(event: UIEvent){
         viewModelScope.launch {
@@ -66,6 +52,8 @@ class NoteListViewModel @Inject constructor(
                     repository.insertItem(noteItem!!)
                 }
             }
+
+            else -> {}
         }
 
     }
